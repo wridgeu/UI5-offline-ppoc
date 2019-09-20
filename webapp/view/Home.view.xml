@@ -1,0 +1,25 @@
+<mvc:View
+	controllerName="mrb.offline.demo.controller.Home"
+	displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page
+		id="page"
+		title="{i18n>title}">
+        <content>
+            <l:VerticalLayout
+			class="sapUiContentPadding"
+			width="50%">
+                <l:content>
+                    <Button text="Add Database Object" press="onAddObject"/>
+                    <Button text="Read Database Object" press="onRead" />
+                    <Input id="inputReadDB" required="true"/>
+                    <Button text="Delete Database Object" press="onDelete"/>
+                    <Input id="inputDelDB" required="true"/>
+                    <Button text="Delete Object Store" press="onDeleteOStore" />
+                </l:content>
+            </l:VerticalLayout>
+        </content>
+    </Page>
+</mvc:View>
