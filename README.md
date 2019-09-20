@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 [![Build Status](https://travis-ci.org/SAP/openui5-basic-template-app.svg?branch=master)](https://travis-ci.org/SAP/openui5-basic-template-app)
 ![OpenUI5 logo](http://openui5.org/images/OpenUI5_new_big_side.png)
 
-# openui5-basic-template-app
-OpenUI5 basic template app using the UI5 Build and Development Tooling. You can use it as a starting point to build custom OpenUI5 apps.
+# Intro
+This little repo is based of the OpenUI5 basic template app using the UI5 Build and Development Tooling. It's basically a test for SW, IndexedDB and other "Offline"-capabilities.
 
 ## More information
 * [Live Demo](https://sap.github.io/openui5-basic-template-app)
@@ -47,10 +46,3 @@ For installation instructions please see [Installing the UI5 CLI](https://github
 
 For more build and development options please see: [UI5 Build and Development Tooling](https://github.com/SAP/ui5-tooling)
 
-## Support
-This repository is based on the [OpenUI5 template demo apps](https://openui5.hana.ondemand.com/#/demoapps) and updated regularly with our latest recommendations. 
-If you found a bug, please create an [OpenUI5 issue](https://github.com/sap/openui5/issues). Thank you!
-=======
-# UI5-Offline-PPoC
-Ein Test bzgl. Offlinefunktionalität mit UI5, IndexedDB, SW ... 
->>>>>>> 3f77baefc99048f9b224b83d79f054298c9f2c9b
