@@ -13,6 +13,7 @@
 			width="50%">
                 <l:content>
                     <Button text="Add Database Object" press="onAddObject"/>
+                    <Button text="Update Object Store" press="onUpdateOStore" />
                     <Button text="Read Database Object" press="onRead" />
                     <Input id="inputReadDB" required="true"/>
                     <Button text="Delete Database Object" press="onDelete"/>

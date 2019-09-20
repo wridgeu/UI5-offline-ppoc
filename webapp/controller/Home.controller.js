@@ -16,8 +16,9 @@ sap.ui.define([
 			indexedDB.initDB("UI5_WHT", "1", [['WHT', 'TANUM'], ['WHT1', ['TANUM', 'TANUM2']]]);
 		},
 		onAddObject: function () {
+			//Testdata
 			var owht = {
-				TANUM: '193254' + Math.random(),
+				TANUM: '193254',
 				VLPLA: '24-23-1',
 				NLPLA: '25-23-1'
 			};
@@ -34,10 +35,19 @@ sap.ui.define([
 		},
 		onDeleteOStore: function() {
 			//dbname, OStoreName, txoption, dbversion
-			indexedDB.deleteObjectStore("UI5_WHT" , 'WHT', "2");
+			indexedDB.deleteObjectStore("UI5_WHT" , "2", 'WHT');
 			//Wenn die DB gelöscht wird (und eine 2te Version existiert),
 			//wird beim onInit kein neuer ObjectStore angelegt, da
 			//standard Version "1" ist, und es keine Version "1" mehr gibt
+		},
+		onUpdateOStore: function(){
+			//Testdata
+			var owht = {
+				TANUM: '193254',
+				VLPLA: '24-23-2',
+				NLPLA: '25-23-4'
+			};
+			indexedDB.updateObjectInDatabase("UI5_WHT", 'WHT', 'readwrite', owht);
 		}
 	});
 });

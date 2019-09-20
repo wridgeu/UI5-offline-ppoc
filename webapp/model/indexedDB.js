@@ -3,7 +3,7 @@ sap.ui.define([], function () {
 
     //opens up a database with a specific version:default 1
     function _openDB (oDBName, dbVers){
-        //dbVers = dbVers || "1";
+        dbVers = dbVers || "1";
         //make sure our browser supports indexeddb
         if (!('indexedDB' in window)){
             console.log('This browser doesn\'t support IndexedDB');
@@ -26,6 +26,7 @@ sap.ui.define([], function () {
             }
             oIDDB.onsuccess = function(evt){
                 //could be implemented to create a "database state"
+                console.log('Database got created or called: ' + evt.target.result);
             }
             oIDDB.onerror = function(evt){
                 //Display error message in console
@@ -44,11 +45,24 @@ sap.ui.define([], function () {
                 console.log(evt.target.error.message);
             }
         },
-        readAllFromDatabase: function(dbName, oStore, txoption){
-            txoption = txoption || "readonly";
+        updateObjectInDatabase: function(dbName, oStore, txOption, oObjData){            
+            txOption = txOption || "readwrite";
             var oIDDB = _openDB(dbName); //window.indexedDB.open(dbname);
             oIDDB.onsuccess = function(evt){
-                var txn         = evt.target.result.transaction(oStore, txoption);
+				var txn = evt.target.result.transaction(oStore, txOption);
+                var store = txn.objectStore(oStore);
+                store.put(oObjData);
+            }
+            oIDDB.onerror = function(evt){
+                //Display error message in console
+                console.log(evt.target.error.message);
+            }
+        },
+        readAllFromDatabase: function(dbName, oStore, txOption){
+            txOption = txOption || "readonly";
+            var oIDDB = _openDB(dbName); //window.indexedDB.open(dbname);
+            oIDDB.onsuccess = function(evt){
+                var txn         = evt.target.result.transaction(oStore, txOption);
                 var txnObjStore = txn.objectStore(oStore);
                 var oCursor     = txnObjStore.openCursor();
                 oCursor.onsuccess = function(evt) {
@@ -65,10 +79,10 @@ sap.ui.define([], function () {
                 console.log(evt.target.error.message);
             }
         },
-        deleteSpecificRow: function(dbName, oStore, txoption, delKey){
+        deleteSpecificRow: function(dbName, oStore, txOption, delKey){
             var oIDDB = _openDB(dbName); //window.indexedDB.open(dbname);
             oIDDB.onsuccess = function(evt){
-                var txn         = evt.target.result.transaction(oStore, txoption);
+                var txn         = evt.target.result.transaction(oStore, txOption);
                 var txnObjStore = txn.objectStore(oStore);
                 var delRequest  = txnObjStore.delete(delKey);
                 delRequest.onsuccess = function() {
@@ -81,12 +95,10 @@ sap.ui.define([], function () {
                 console.log(evt.target.error.message);
             }
         },
-        deleteObjectStore: function(dbName, oStore, dbVers) {
+        deleteObjectStore: function(dbName, dbVers, oStore) {
             var oIDDB = _openDB(dbName, dbVers);
             oIDDB.onupgradeneeded = function(evt){
                 evt.target.result.deleteObjectStore(oStore);
-/*              var db = evt.target.result;
-                db.deleteObjectStore(oStore); */
             }
             oIDDB.onerror = function(evt){
                 //Display error message in console
