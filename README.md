@@ -36,8 +36,8 @@ For installation instructions please see [Installing the UI5 CLI](https://github
     ui5 serve -o /index.html
     ```
 
-
-## Testing - !Might not work(several rasons ...)! ![Warning](https://www.freeiconspng.com/uploads/dangerous-icon-13.png)
+![Warning](https://www.freeiconspng.com/uploads/dangerous-icon-13.png =50x50)
+## Testing - !Might not work(several rasons ...)!
 * Run ESLint code validation
     ```sh
     npm run lint
