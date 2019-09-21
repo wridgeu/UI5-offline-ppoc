@@ -37,6 +37,7 @@ For installation instructions please see [Installing the UI5 CLI](https://github
     ```
 
 ![Warning](https://www.freeiconspng.com/uploads/dangerous-icon-13.png){:height="50px" width="50px"}
+<img src="https://www.freeiconspng.com/uploads/dangerous-icon-13.png" height="50px" width="50">
 ## Testing - !Might not work(several rasons ...)!
 * Run ESLint code validation
     ```sh
