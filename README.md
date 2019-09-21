@@ -36,9 +36,10 @@ For installation instructions please see [Installing the UI5 CLI](https://github
     ui5 serve -o /index.html
     ```
 
+## Testing - !Might not work(several rasons)!
+
 <img src="https://www.freeiconspng.com/uploads/dangerous-icon-13.png" height="50px" width="50" />
 
-## Testing - !Might not work(several rasons ...)!
 * Run ESLint code validation
     ```sh
     npm run lint
