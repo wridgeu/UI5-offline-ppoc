@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="manifest" href="manifest.json">
 	<title>IndexedDB Testing</title>
 
-	<script id="sap-ui-bootstrap"
-			src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
-			data-sap-ui-theme="sap_belize"
-			data-sap-ui-resourceroots='{
+	<script 
+		id="sap-ui-bootstrap" 
+		src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+		data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.core" 
+		data-sap-ui-theme="sap_belize" 
+		data-sap-ui-resourceroots='{
 				"mrb.offline.demo": "./"
-			}'
-			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
-			data-sap-ui-compatVersion="edge"
-			data-sap-ui-async="true"
-			data-sap-ui-frameOptions="trusted">
+		}' 
+		data-sap-ui-oninit="module:sap/ui/core/ComponentSupport" 
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-async="true" 
+		data-sap-ui-frameOptions="trusted">
+		</script>
+	<script>
+		//check sw api && register the service worker
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function () {
+				navigator.serviceWorker.register('./sw.js').then(function (registration) {
+					// Registration was successful
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}, function (err) {
+					// registration failed :(
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
+		}
 	</script>
 </head>
 
 <body class="sapUiBody">
 	<div data-sap-ui-component data-name="mrb.offline.demo" data-id="container" data-settings='{"id" : "basicTemplate"}'></div>
 </body>
+
 </html>

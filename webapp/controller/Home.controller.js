@@ -18,7 +18,7 @@ sap.ui.define([
 		onAddObject: function () {
 			//Testdata
 			var owht = {
-				TANUM: '193254',
+				TANUM: '193254' + Math.random(),
 				VLPLA: '24-23-1',
 				NLPLA: '25-23-1'
 			};

@@ -26,7 +26,8 @@ sap.ui.define([], function () {
             }
             oIDDB.onsuccess = function(evt){
                 //could be implemented to create a "database state"
-                console.log('Database got created or called: ' + evt.target.result);
+                console.log('Database got created or called: ');
+                console.log(evt.target.result);
             }
             oIDDB.onerror = function(evt){
                 //Display error message in console
