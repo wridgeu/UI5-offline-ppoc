@@ -36,9 +36,8 @@ For installation instructions please see [Installing the UI5 CLI](https://github
     ui5 serve -o /index.html
     ```
 
-![Warning](https://www.freeiconspng.com/uploads/dangerous-icon-13.png){:height="50px" width="50px"}
-<img src="https://www.freeiconspng.com/uploads/dangerous-icon-13.png" height="50px" width="50">
 ## Testing - !Might not work(several rasons ...)!
+<img src="https://www.freeiconspng.com/uploads/dangerous-icon-13.png" height="50px" width="50">
 * Run ESLint code validation
     ```sh
     npm run lint
@@ -51,6 +50,7 @@ For installation instructions please see [Installing the UI5 CLI](https://github
     ```sh
     npm test
     ```
+<img src="https://www.freeiconspng.com/uploads/dangerous-icon-13.png" height="50px" width="50">
 
 For more build and development options please see: [UI5 Build and Development Tooling](https://github.com/SAP/ui5-tooling)
 
