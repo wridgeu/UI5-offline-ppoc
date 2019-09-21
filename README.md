@@ -1,8 +1,12 @@
-[![Build Status](https://travis-ci.org/SAP/openui5-basic-template-app.svg?branch=master)](https://travis-ci.org/SAP/openui5-basic-template-app)
 ![OpenUI5 logo](http://openui5.org/images/OpenUI5_new_big_side.png)
 
 # Intro
 This little repo is based of the OpenUI5 basic template app using the UI5 Build and Development Tooling. It's basically a test for SW, IndexedDB and other "Offline"-capabilities.
+
+### The Service-Worker example code is taken from the following sources:
+* [PWA Sample on Github](https://github.com/SAP/openui5-pwa-sample/blob/master/src/service-worker.js)
+* [UI5Con 2019](https://www.youtube.com/watch?v=z_bwa1wMyT4&feature=youtu.be)
+* [SAP Blog - UI5 Offline Application](https://blogs.sap.com/2016/01/14/ui5-offline-application-using-serviceworker-api/)
 
 ## More information
 * [Live Demo](https://sap.github.io/openui5-basic-template-app)
