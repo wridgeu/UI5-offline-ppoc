@@ -22,12 +22,18 @@ sap.ui.define([
 				VLPLA: '24-23-1',
 				NLPLA: '25-23-1'
 			};
+			//get current View ID and work with its controls
+			var homeView = sap.ui.getCore().byId("container-offlineTest---home");
+			owht.VLPLA = homeView.byId("inputVLPLA").getValue();
+			owht.NLPLA = homeView.byId("inputNLPLA").getValue();
+
 			indexedDB.addOjectToDatabase("UI5_WHT" , 'WHT','readwrite', owht);
 			console.log(owht.TANUM + " got added!");
 		},
 		onRead: function () {
 			//Read from ObjectStore: DB, OStore, Readoption:READONLY
-			indexedDB.readAllFromDatabase("UI5_WHT" , 'WHT',"");
+			var val = indexedDB.readAllFromDatabase("UI5_WHT" , 'WHT',"");
+			console.log(val);
 		},
 		onDelete: function() {
 			// DBname, OStoreName, txoption, key from keypath

@@ -10,14 +10,23 @@
         <content>
             <l:VerticalLayout
 			class="sapUiContentPadding"
-			width="50%">
+			width="100%">
                 <l:content>
+                <Text text="Enter VLPLA and NLPLA (Key = Auto):"/>
+                <l:HorizontalLayout>                
                     <Button text="Add Database Object" press="onAddObject"/>
+                    <Input id="inputVLPLA" type="Text" placeholder="25-23-1"></Input>
+                    <Input id="inputNLPLA" type="Text" placeholder="24-23-1"></Input>
+                </l:HorizontalLayout>
+                <Text text="Update specific Entity:"/>
+                <l:HorizontalLayout>
                     <Button text="Update Object Store" press="onUpdateOStore" />
+                    <Input id="inputKey"      type="Text" placeholder="Enter TANUM ..."></Input>                    
+                    <Input id="inputnewVLPLA" type="Text" placeholder="24-23-1"></Input>
+                    <Input id="inputnewNLPLA" type="Text" placeholder="25-23-1"></Input>
+                </l:HorizontalLayout>
                     <Button text="Read Database Object" press="onRead" />
-                    <Input id="inputReadDB" required="true"/>
                     <Button text="Delete Database Object" press="onDelete"/>
-                    <Input id="inputDelDB" required="true"/>
                     <Button text="Delete Object Store" press="onDeleteOStore" />
                 </l:content>
             </l:VerticalLayout>
