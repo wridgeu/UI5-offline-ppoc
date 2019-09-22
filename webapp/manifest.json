@@ -13,7 +13,7 @@
 	"orientation": "portrait",
 	"background_color": "#abcdef",
 	"theme_color": "#ababab",
-	"short_name": "Demo Off",
+	"short_name": "Testing Offline App",
 	"sap.app": {
 		"id": "mrb.offline.demo",
 		"type": "application",
