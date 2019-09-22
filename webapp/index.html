@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="manifest" href="manifest.json">
+	<link rel="manifest" href="manifest.json"> <!--Link manifest for standalone capabilities-->
 	<title>IndexedDB Testing</title>
 
 	<script 
@@ -19,21 +19,8 @@
 		data-sap-ui-compatVersion="edge"
 		data-sap-ui-async="true" 
 		data-sap-ui-frameOptions="trusted">
-		</script>
-	<script>
-		//check sw api && register the service worker
-		if ('serviceWorker' in navigator) {
-			window.addEventListener('load', function () {
-				navigator.serviceWorker.register('./sw.js').then(function (registration) {
-					// Registration was successful
-					console.log('ServiceWorker registration successful with scope: ', registration.scope);
-				}, function (err) {
-					// registration failed :(
-					console.log('ServiceWorker registration failed: ', err);
-				});
-			});
-		}
 	</script>
+	<script src="sw.js"></script> <!--Everything about the service worker-->
 </head>
 
 <body class="sapUiBody">

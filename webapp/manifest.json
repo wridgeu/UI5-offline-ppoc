@@ -1,5 +1,19 @@
 {
 	"_version": "1.12.0",
+	"name": "Testing Offline App",
+	"icons":[{
+		"src": "/favicon.png",
+		"sizes": "144x144",
+		"type": "image/png",
+		"density": 3
+	}],
+	"display": "standalone",
+	"start_url": "/index.html",
+	"lang": "en",
+	"orientation": "portrait",
+	"background_color": "#abcdef",
+	"theme_color": "#ababab",
+	"short_name": "Demo Off",
 	"sap.app": {
 		"id": "mrb.offline.demo",
 		"type": "application",
@@ -12,7 +26,6 @@
 		"resources": "resources.json",
 		"ach": "ach"
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
