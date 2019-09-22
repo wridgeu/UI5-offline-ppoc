@@ -9,6 +9,7 @@ This little repo is based of the OpenUI5 basic template app using the UI5 Build 
 * [Google SW Documentation](https://developers.google.com/web/fundamentals/primers/service-workers/)
 * [PWA Sample on Github](https://github.com/SAP/openui5-pwa-sample/blob/master/src/service-worker.js)
 * [UI5Con 2019](https://www.youtube.com/watch?v=z_bwa1wMyT4&feature=youtu.be)
+* [Localforage](https://github.com/localForage/localForage)
 
 ## More information
 * [Live Demo](https://sap.github.io/openui5-basic-template-app)

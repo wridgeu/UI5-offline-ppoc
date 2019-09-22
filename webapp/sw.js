@@ -2,7 +2,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable max-nested-callbacks */
 /* eslint-disable strict */
-var CACHE_NAME = 'test-oui5-offline-v1.0'; // pwa-ui5-todo-v1.0.07
+var CACHE_NAME = 'ui5_assets'; // pwa-ui5-todo-v1.0.07
 var RESOURCES_TO_PRELOAD = [
 	'index.html',
 	'manifest.json',

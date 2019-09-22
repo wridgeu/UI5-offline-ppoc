@@ -21,7 +21,7 @@ sap.ui.define([], function () {
                 //evt.target.result.createObjectStore(oSname, {keyPath: kPath});
                 //create mulitple objectStores with multiple Keyfields at once;	
                 for (var i=0; i<arrObj.length; i++){
-                    evt.target.result.createObjectStore(arrObj[i][0], {keyPath: arrObj[i][1]});		
+                    evt.target.result.createObjectStore(arrObj[i][0], {keyPath: arrObj[i][1]});
                 }	  
             }
             oIDDB.onsuccess = function(evt){
