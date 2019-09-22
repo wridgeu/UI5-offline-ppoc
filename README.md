@@ -42,7 +42,7 @@ For installation instructions please see [Installing the UI5 CLI](https://github
     ui5 serve -o /index.html
     ```
 
-## Testing - !Might not work(several rasons)!
+## Testing - !Might not work(several reasons)!
 
 <img src="https://www.freeiconspng.com/uploads/dangerous-icon-13.png" alt="warning" height="50px" width="50" />
 
