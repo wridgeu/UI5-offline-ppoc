@@ -63,5 +63,58 @@ For installation instructions please see [Installing the UI5 CLI](https://github
 
 <img src="https://www.freeiconspng.com/uploads/dangerous-icon-13.png" alt="warning" height="50px" width="50" />
 
+## WebRfC SAP System
+
+* [SAP Blog](https://blogs.sap.com/2012/08/07/webrfc-simply-calling-an-rfc-from-javascript/)
+
+#### Functionmodule Declaration:
+
+1. Overview of Function Module
+    ```
+    *"----------------------------------------------------------------------
+    *"*"Lokale Schnittstelle:
+    *"  TABLES
+    *"      QUERY_STRING STRUCTURE  W3QUERY
+    *"      HTML STRUCTURE  W3HTML
+    *"      MIME STRUCTURE  W3MIME
+    *"  CHANGING
+    *"     VALUE(CONTENT_TYPE) LIKE  W3PARAM-CONT_TYPE DEFAULT
+    *"       'APPLICATION/JSON'
+    *"     VALUE(CONTENT_LENGTH) LIKE  W3PARAM-CONT_LEN
+    *"     VALUE(RETURN_CODE) LIKE  W3PARAM-RET_CODE
+    *"----------------------------------------------------------------------
+    ```
+1. Changing-Parameter
+    ```
+    Parametername   Type    Type                DEFAULT
+    CONTENT_TYPE	LIKE	W3PARAM-CONT_TYPE	'APPLICATION/JSON'
+    CONTENT_LENGTH	LIKE	W3PARAM-CONT_LEN	                     
+    RETURN_CODE	    LIKE	W3PARAM-RET_CODE	                     
+    ```
+1. Tables-Parameter
+    ```
+    Parametername   Type    Type                DEFAULT
+    QUERY_STRING	LIKE	W3QUERY
+    HTML	        LIKE	W3HTML
+    MIME	        LIKE	W3MIME	                     
+    ```
+1. Example Code
+    ```
+    DATA: name TYPE string.
+
+    SORT query_string DESCENDING.
+
+    READ TABLE query_string WITH KEY name = '_name'.
+
+    name = query_string-value.
+
+    DATA: htmldoc LIKE LINE OF html.
+
+    CONCATENATE '{"results": [ {"key": "name", "value": "' name '"}, {"key": "phone", "value": "911"}]}' INTO htmldoc-line.
+
+    INSERT htmldoc INTO TABLE html.   
+    ```
+1. Add Module to WebRfC via Transaction SMW0
+
 For more build and development options please see: [UI5 Build and Development Tooling](https://github.com/SAP/ui5-tooling)
 
