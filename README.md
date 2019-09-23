@@ -31,8 +31,11 @@ For installation instructions please see [Installing the UI5 CLI](https://github
 ## Setup
 1. Clone the repository and navigate into it
     ```sh
-    git clone https://github.com/SAP/openui5-basic-template-app.git or https://github.com/SAPMarco/UI5-Offline-PPoC.git
-    cd openui5-basic-template-app                                   or cd UI5-Offline-PPoC
+    git clone https://github.com/SAP/openui5-basic-template-app.git 
+    or        https://github.com/SAPMarco/UI5-Offline-PPoC.git
+
+    cd openui5-basic-template-app                                  
+    or cd UI5-Offline-PPoC
     ```
 1. Install all dependencies
     ```sh
@@ -117,7 +120,8 @@ For more build and development options please see: [UI5 Build and Development To
 
     INSERT htmldoc INTO TABLE html.   
     ```
-1. Add Module to WebRfC via Transaction SMW0 (F7, Function Module)
+1. Expose Module via WebRfC with Transaction SMW0 (F7, Function Module)
+
 1. Function Module can be called via:
     ```
     http(s)://<IP/Server>:<PORT>/sap/bc/webrfc?_FUNCTION=<Function_Module_Name>&<key=value>
