@@ -86,8 +86,8 @@ For installation instructions please see [Installing the UI5 CLI](https://github
     ```
 1. Changing-Parameter
     ```
-    Parametername   Type    Type                    DEFAULT
-    CONTENT_TYPE	LIKE	W3PARAM-CONT_TYPE	    'APPLICATION/JSON'
+    Parametername   Type    Type                DEFAULT
+    CONTENT_TYPE	LIKE	W3PARAM-CONT_TYPE   'APPLICATION/JSON'
     CONTENT_LENGTH	LIKE	W3PARAM-CONT_LEN	                     
     RETURN_CODE     LIKE	W3PARAM-RET_CODE	                     
     ```
