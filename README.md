@@ -9,7 +9,6 @@ This little repo is based of the OpenUI5 basic template app using the UI5 Build 
 * [Google SW Documentation](https://developers.google.com/web/fundamentals/primers/service-workers/)
 * [PWA Sample on Github](https://github.com/SAP/openui5-pwa-sample/blob/master/src/service-worker.js)
 * [Background Sync SW](https://davidwalsh.name/background-sync)
-* [WebRfC SAP](https://blogs.sap.com/2012/08/07/webrfc-simply-calling-an-rfc-from-javascript/)
 * [UI5Con 2019](https://www.youtube.com/watch?v=z_bwa1wMyT4&feature=youtu.be)
 * [Localforage](https://github.com/localForage/localForage)
 
@@ -72,6 +71,7 @@ For more build and development options please see: [UI5 Build and Development To
 ## WebRfC SAP System
 
 * [SAP Blog](https://blogs.sap.com/2012/08/07/webrfc-simply-calling-an-rfc-from-javascript/)
+* [WebRFC Programming Documentation](https://help.sap.com/saphelp_46c/helpdata/en/2b/d920434b8a11d1894c0000e8323c4f/content.htm?no_cache=true)
 
 #### Function module declaration:
 
