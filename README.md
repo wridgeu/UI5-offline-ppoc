@@ -63,11 +63,14 @@ For installation instructions please see [Installing the UI5 CLI](https://github
 
 <img src="https://www.freeiconspng.com/uploads/dangerous-icon-13.png" alt="warning" height="50px" width="50" />
 
+
+For more build and development options please see: [UI5 Build and Development Tooling](https://github.com/SAP/ui5-tooling)
+
 ## WebRfC SAP System
 
 * [SAP Blog](https://blogs.sap.com/2012/08/07/webrfc-simply-calling-an-rfc-from-javascript/)
 
-#### Functionmodule Declaration:
+#### Function module declaration:
 
 1. Overview of Function Module
     ```
@@ -114,7 +117,6 @@ For installation instructions please see [Installing the UI5 CLI](https://github
 
     INSERT htmldoc INTO TABLE html.   
     ```
-1. Add Module to WebRfC via Transaction SMW0
+1. Add Module to WebRfC via Transaction SMW0 (F7, Function Module)
 
-For more build and development options please see: [UI5 Build and Development Tooling](https://github.com/SAP/ui5-tooling)
 
