@@ -29,6 +29,11 @@
                     <Button text="Delete Database Object" press="onDelete"/>
                     <Button text="Delete Object Store" press="onDeleteOStore" />
                 </l:content>
+                <Text text="Offline/Online - Push to Backend:"/>
+                <l:HorizontalLayout>                
+                    <Button text="Sync" press="onSync"/>
+                    <Input id="syncData" type="Text" placeholder="Some TANUM"></Input>
+                </l:HorizontalLayout>
             </l:VerticalLayout>
         </content>
     </Page>

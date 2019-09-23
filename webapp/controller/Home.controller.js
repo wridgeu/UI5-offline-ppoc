@@ -71,6 +71,23 @@ sap.ui.define([
 			homeView.byId("inputKey").getValue("");
 
 			indexedDB.updateObjectInDatabase("localstorage", 'keyvaluepairs', 'readwrite', owht);
+		},
+		onSync: async function(){
+			//http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name={%20key:%20test%20}
+			//Dirty get core 
+			var homeView = sap.ui.getCore().byId("container-offlineTest---home");			
+			var tanumPar = homeView.byId("syncData").getValue();
+			var url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
+			var response = await fetch(url, {
+				mode: 'no-cors',
+				credentials: 'include'
+			}).then(function(response){
+				//TODO
+				//var jsonResp = await response.json(); //json();
+				//return console.log(JSON.stringify(jsonResp));
+			})
+			
+			
 		}
 	});
 });
