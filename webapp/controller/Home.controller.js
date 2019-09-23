@@ -77,11 +77,25 @@ sap.ui.define([
 			//Dirty get core 
 			var homeView = sap.ui.getCore().byId("container-offlineTest---home");			
 			var tanumPar = homeView.byId("syncData").getValue();
-			var url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
+
+			//SAOP?
+			/* var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open('GET', 'http://Swuewm1.salt-solutions.de:8000/sap/bc/srt/wsdl/flv_10002P111AD1/sdef_url/Z_MRB_UI5SYNC_JSON?sap-client=020', true);
+			//xmlhttp.setRequestHeader("SOAPAction", "urn:sap-com:document:sap:soap:functions:mc-style");
+			//xmlhttp.setRequestHeader( "Content-Type","text/xml; charset=utf-8");
+			xmlhttp.send();
+			xmlhttp.onload = function(e){
+				console.log(e);
+			};
+			xmlhttp.onprogress = function(e){
+				console.log(e);
+			}; */
+			//WebRfC
+			/*var  url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
 			var response = await fetch(url, {
 				mode: 'no-cors',
 				credentials: 'include',
-			});			
+			}); */			
 		}
 	});
 });
