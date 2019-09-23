@@ -80,14 +80,8 @@ sap.ui.define([
 			var url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
 			var response = await fetch(url, {
 				mode: 'no-cors',
-				credentials: 'include'
-			}).then(function(response){
-				//TODO
-				//var jsonResp = await response.json(); //json();
-				//return console.log(JSON.stringify(jsonResp));
-			})
-			
-			
+				credentials: 'include',
+			});			
 		}
 	});
 });
