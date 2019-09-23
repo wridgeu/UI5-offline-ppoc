@@ -3,7 +3,7 @@
 # Intro
 This little repo is based of the OpenUI5 basic template app using the UI5 Build and Development Tooling. It's basically a test for SW, IndexedDB and other "Offline"-capabilities.
 
-### Detailed information on SW & inspirations/sources:
+### Detailed information on SW & other stuff used:
 * [SAP Blog - UI5 Offline Application](https://blogs.sap.com/2016/01/14/ui5-offline-application-using-serviceworker-api/)
 * [Mozilla SW Documentation](https://developer.mozilla.org/de/docs/Web/API/Service_Worker_API)
 * [Google SW Documentation](https://developers.google.com/web/fundamentals/primers/service-workers/)
@@ -11,11 +11,14 @@ This little repo is based of the OpenUI5 basic template app using the UI5 Build 
 * [Background Sync SW](https://davidwalsh.name/background-sync)
 * [UI5Con 2019](https://www.youtube.com/watch?v=z_bwa1wMyT4&feature=youtu.be)
 * [Localforage](https://github.com/localForage/localForage)
+* [Fetch-API](https://gist.github.com/justsml/529d0b1ddc5249095ff4b890aad5e801)
 
 ### ToDo:
 * OData
 * Adjust Controller/UI Code - currently only for testing & learning purposes
-* Synchronization between Front- and Backend (with SW and IDDB-Data to OData) 
+* Synchronization between Front- and Backend (with SW and IDDB-Data to OData or others; Fetch/Xmlhttprequest)
+* Sync-Event on SW has to be implemented
+* Bind IndexedDB Object Store as model to some list control
 
 ## More information
 * [Live Demo](https://sap.github.io/openui5-basic-template-app)
