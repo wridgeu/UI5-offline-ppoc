@@ -118,5 +118,8 @@ For more build and development options please see: [UI5 Build and Development To
     INSERT htmldoc INTO TABLE html.   
     ```
 1. Add Module to WebRfC via Transaction SMW0 (F7, Function Module)
-
+1. Function Module can be called via:
+    ```
+    http(s)://<IP/Server>:<PORT>/sap/bc/webrfc?_FUNCTION=<Function_Module_Name>&<key=value>
+    ```
 
