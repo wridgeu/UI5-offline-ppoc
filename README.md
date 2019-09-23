@@ -31,8 +31,8 @@ For installation instructions please see [Installing the UI5 CLI](https://github
 ## Setup
 1. Clone the repository and navigate into it
     ```sh
-    git clone https://github.com/SAP/openui5-basic-template-app.git
-    cd openui5-basic-template-app
+    git clone https://github.com/SAP/openui5-basic-template-app.git or https://github.com/SAPMarco/UI5-Offline-PPoC.git
+    cd openui5-basic-template-app                                   or cd UI5-Offline-PPoC
     ```
 1. Install all dependencies
     ```sh
@@ -41,7 +41,7 @@ For installation instructions please see [Installing the UI5 CLI](https://github
 
 1. Start a local server and run the application (http://localhost:8080/index.html)
     ```sh
-    ui5 serve -o /index.html
+    ui5 serve -o /index.html or npm start
     ```
 
 ## Testing - !Might not work(several reasons)!
