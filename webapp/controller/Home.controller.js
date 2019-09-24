@@ -101,15 +101,18 @@ sap.ui.define([
 			//WebRfC SAP System - EWM1: var  url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
 			//Placeholder API for testing: https://jsonplaceholder.typicode.com/todos/1
 			// sap@home http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test
-/* 			(function () {
-				fetch("http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test", {
-					mode: "no-cors"
+			(function () {
+				fetch("http://localhost:8080/vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test", {
+					credentials: 'include',
+					headers: {
+						"Content-Type": "text/html"
+					  },
 					}).then(function (e) {
 						return e.json();
 					}).then(function (e) {
 						console.log(e);
 					});
-			})() */
+			})()
 		}
 	});
 });

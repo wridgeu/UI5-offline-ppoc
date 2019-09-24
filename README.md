@@ -12,6 +12,7 @@ This little repo is based of the OpenUI5 basic template app using the UI5 Build 
 * [UI5Con 2019](https://www.youtube.com/watch?v=z_bwa1wMyT4&feature=youtu.be)
 * [Localforage](https://github.com/localForage/localForage)
 * [Fetch-API](https://gist.github.com/justsml/529d0b1ddc5249095ff4b890aad5e801)
+* [CORS Anywhere](https://www.npmjs.com/package/cors-anywhere)
 
 ### ToDo:
 * OData
