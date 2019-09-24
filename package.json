@@ -10,7 +10,8 @@
     "karma-ci": "karma start karma-ci.conf.js",
     "watch": "npm run karma",
     "test": "npm run lint && rimraf coverage && npm run karma-ci",
-    "build": "rimraf dist && ui5 build --a"
+    "build": "rimraf dist && ui5 build --a",
+    "proxy": "node proxy.js"
   },
   "dependencies": {
     "@openui5/sap.m": "^1.52.5",
@@ -19,6 +20,7 @@
     "@openui5/themelib_sap_belize": "^1.52.5"
   },
   "devDependencies": {
+    "cors-anywhere": "^0.4.1",
     "@ui5/cli": "^1.0.0",
     "eslint": "^4.19.1",
     "karma": "^4.0.1",
