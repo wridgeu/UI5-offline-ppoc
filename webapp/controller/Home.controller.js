@@ -101,8 +101,8 @@ sap.ui.define([
 			//WebRfC SAP System - EWM1: var  url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
 			//Placeholder API for testing: https://jsonplaceholder.typicode.com/todos/1
 			(function () {
-				fetch("https://jsonplaceholder.typicode.com/todos/1")
-					.then(function (e) {
+				fetch("https://jsonplaceholder.typicode.com/todos/1", {
+					}).then(function (e) {
 						return e.json();
 					}).then(function (e) {
 						console.log(e);
