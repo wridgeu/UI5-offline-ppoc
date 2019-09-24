@@ -77,8 +77,9 @@ sap.ui.define([
 			var homeView = sap.ui.getCore().byId("container-offlineTest---home");
 			var tanumPar = homeView.byId("syncData").getValue();
 			//SAOP?
-/* 			var xhr = new XMLHttpRequest();
-			xhr.open('GET', 'http://Swuewm1.salt-solutions.de:8000/sap/bc/srt/wsdl/flv_10002P111AD1/sdef_url/Z_MRB_UI5SYNC_JSON?sap-client=020');
+ 	/* 		var xhr = new XMLHttpRequest();
+			xhr.open('GET', 'http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test');
+			xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
 			// request state change event
 			xhr.onreadystatechange = function () {// request completed?
 				if (xhr.readyState !== 4) return;
@@ -96,18 +97,19 @@ sap.ui.define([
 			};
 			xhr.onprogress = function (e) {
 				console.log(e);
-			}; */
-
+			};  */
 			//WebRfC SAP System - EWM1: var  url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
 			//Placeholder API for testing: https://jsonplaceholder.typicode.com/todos/1
-			(function () {
-				fetch("https://jsonplaceholder.typicode.com/todos/1", {
+			// sap@home http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test
+/* 			(function () {
+				fetch("http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test", {
+					mode: "no-cors"
 					}).then(function (e) {
 						return e.json();
 					}).then(function (e) {
 						console.log(e);
 					});
-			})()
+			})() */
 		}
 	});
 });
