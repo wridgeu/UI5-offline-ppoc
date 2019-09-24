@@ -4,7 +4,7 @@
   "description": "Best-practice starting point for building a freestyle app",
   "private": true,
   "scripts": {
-    "start": "ui5 serve",
+    "start": "ui5 serve -o index.html",
     "lint": "eslint webapp",
     "karma": "karma start",
     "karma-ci": "karma start karma-ci.conf.js",
