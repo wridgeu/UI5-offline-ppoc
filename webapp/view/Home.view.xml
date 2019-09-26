@@ -31,7 +31,7 @@
                 </l:content>
                 <Text text="Offline/Online - Push to Backend:"/>
                 <l:HorizontalLayout>                
-                    <Button text="Sync" press="onSync"/>
+                    <Button id="testSync" text="Sync" press="onSync"/>
                     <Input id="syncData" type="Text" placeholder="Some TANUM"></Input>
                 </l:HorizontalLayout>
             </l:VerticalLayout>

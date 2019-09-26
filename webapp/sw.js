@@ -25,10 +25,12 @@ var RESOURCES_TO_PRELOAD = [
 //check sw api && register the service worker - registration can also be done in index.html
 if ('serviceWorker' in navigator) {
 	window.addEventListener('load', function () {
-		navigator.serviceWorker.register('sw.js').then(function (registration) {
+		navigator.serviceWorker.register('sw.js').then(function(){
+			return navigator.serviceWorker.ready;
+		}).then(function (registration) {
 			// Registration was successful
 			console.log('ServiceWorker registration successful with scope: ', registration.scope);
-		}, function (err) {
+		}).catch(function (err) {
 			// registration failed :(
 			console.log('ServiceWorker registration failed: ', err);
 		});
