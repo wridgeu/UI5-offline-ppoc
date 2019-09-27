@@ -90,6 +90,7 @@ self.addEventListener('fetch', function (event) {
 //react on specific sync events and do something
 self.addEventListener('sync', function (event) {
 	if (event.tag == 'sync-something') {
-		console.log("do something");
+		// event.waitUntil() - inside only do promises/promise based stuff like fetch;
+		console.log("I work now ...");
 	}
 });
