@@ -4,36 +4,34 @@
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
     xmlns:mvc="sap.ui.core.mvc">
-    <Page
-		id="page"
-		title="{i18n>title}">
+    <Page id="page"	title="{i18n>title}">
         <content>
-            <l:VerticalLayout
-			class="sapUiContentPadding"
-			width="100%">
+            <l:VerticalLayout class="sapUiContentPadding" width="100%">
                 <l:content>
-                <Text text="Enter VLPLA and NLPLA (Key = Auto):"/>
-                <l:HorizontalLayout>                
-                    <Button text="Add Database Object" press="onAddObject"/>
-                    <Input id="inputVLPLA" type="Text" placeholder="25-23-1"></Input>
-                    <Input id="inputNLPLA" type="Text" placeholder="24-23-1"></Input>
-                </l:HorizontalLayout>
-                <Text text="Update specific Entity:"/>
-                <l:HorizontalLayout>
-                    <Button text="Update Object Store" press="onUpdateOStore" />
-                    <Input id="inputKey"      type="Text" placeholder="Enter TANUM ..."></Input>                    
-                    <Input id="inputnewVLPLA" type="Text" placeholder="24-23-1"></Input>
-                    <Input id="inputnewNLPLA" type="Text" placeholder="25-23-1"></Input>
-                </l:HorizontalLayout>
-                    <Button text="Read Database Object" press="onRead" />
-                    <Button text="Delete Database Object" press="onDelete"/>
-                    <Button text="Delete Object Store" press="onDeleteOStore" />
+                    <Text text="Enter VLPLA and NLPLA (Key = Auto):"/>
+                    <l:HorizontalLayout>                
+                        <Button text="Add Database Object" press="onAddObject"/>
+                        <Input id="inputVLPLA" type="Text" placeholder="25-23-1"></Input>
+                        <Input id="inputNLPLA" type="Text" placeholder="24-23-1"></Input>
+                    </l:HorizontalLayout>
+                    <Text text="Update specific Entity:"/>
+                    <l:HorizontalLayout>
+                        <Button text="Update Object Store" press="onUpdateOStore" />
+                        <Input id="inputKey"      type="Text" placeholder="Enter TANUM ..."></Input>                    
+                        <Input id="inputnewVLPLA" type="Text" placeholder="24-23-1"></Input>
+                        <Input id="inputnewNLPLA" type="Text" placeholder="25-23-1"></Input>
+                    </l:HorizontalLayout>
+                    <l:HorizontalLayout>  
+                        <Button text="Read Database Object" press="onRead" />
+                        <Button text="Delete Database Object" press="onDelete"/>
+                        <Button text="Delete Object Store" press="onDeleteOStore" />
+                    </l:HorizontalLayout>
+                    <Text text="Offline/Online - Push to Backend:"/>
+                    <l:HorizontalLayout>                
+                        <Button id="testSync" text="Sync" press="onSync"/>
+                        <Input id="syncData" type="Text" placeholder="Some TANUM"></Input>
+                    </l:HorizontalLayout>
                 </l:content>
-                <Text text="Offline/Online - Push to Backend:"/>
-                <l:HorizontalLayout>                
-                    <Button id="testSync" text="Sync" press="onSync"/>
-                    <Input id="syncData" type="Text" placeholder="Some TANUM"></Input>
-                </l:HorizontalLayout>
             </l:VerticalLayout>
         </content>
     </Page>
