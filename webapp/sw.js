@@ -1,3 +1,4 @@
+importScripts("./webapp/model/indexedDB.js");
 //example taken from: https://github.com/SAP/openui5-pwa-sample/blob/master/src/service-worker.js
 /* eslint-disable consistent-return */
 /* eslint-disable max-nested-callbacks */
@@ -6,7 +7,6 @@ var CACHE_NAME = 'ui5_assets'; // pwa-ui5-todo-v1.0.07
 var RESOURCES_TO_PRELOAD = [
 	'index.html',
 	'manifest.json',
-	'sw.js',
 	'.'
 ];
 /* 
@@ -22,20 +22,6 @@ var RESOURCES_TO_PRELOAD = [
 		`${cdnBase}sap/m/themes/sap_belize_plus/library.css`
 	]);
 */
-//check sw api && register the service worker - registration can also be done in index.html
-if ('serviceWorker' in navigator) {
-	window.addEventListener('load', function () {
-		navigator.serviceWorker.register('sw.js').then(function(){
-			return navigator.serviceWorker.ready;
-		}).then(function (registration) {
-			// Registration was successful
-			console.log('ServiceWorker registration successful with scope: ', registration.scope);
-		}).catch(function (err) {
-			// registration failed :(
-			console.log('ServiceWorker registration failed: ', err);
-		});
-	});
-}
 // Preload some resources during install
 self.addEventListener('install', function (event) {
 	event.waitUntil(
@@ -82,22 +68,28 @@ self.addEventListener('fetch', function (event) {
 						console.error(response.statusText);
 					} else {
 						return caches.open(CACHE_NAME)
-						.then(function (cache) {
-							cache.put(event.request, response.clone());
-							return response;
-							// if the response fails to cache, catch the error
-						}).catch(function (error) {
-							console.error(error);
-							return error;
-						});
+							.then(function (cache) {
+								cache.put(event.request, response.clone());
+								return response;
+								// if the response fails to cache, catch the error
+							}).catch(function (error) {
+								console.error(error);
+								return error;
+							});
 					}
 				}).catch(function (error) {
 					// fetch will fail if server cannot be reached,
 					// this means that either the client or server is offline
 					console.error(error);
-					return caches.match('offline-404.html'); // doesn't exist
+					return caches.match('some-offline-404-message.html'); // doesn't exist
 				});
 			})
 		);
+	}
+});
+//react on specific sync events and do something
+self.addEventListener('sync', function (event) {
+	if (event.tag == 'sync-something') {
+		console.log("do something");
 	}
 });

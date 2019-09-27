@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="manifest" href="manifest.json"> <!--Link manifest for standalone capabilities-->
 	<title>IndexedDB Testing</title>
-
 	<script 
 		id="sap-ui-bootstrap" 
 		src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
@@ -20,11 +18,24 @@
 		data-sap-ui-async="true" 
 		data-sap-ui-frameOptions="trusted">
 	</script>
-	<script src="sw.js"></script> <!--Everything about the service worker-->
+	<script> //check sw api && register the service worker - registration can also be done in index.html
+		if ('serviceWorker' in navigator && 'SyncManager' in window) {
+			window.addEventListener('load', function () {
+				navigator.serviceWorker.register('./sw.js')
+				.then(function (registration) {
+					// Registration was successful
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}).catch(function (err) {
+					// registration failed 
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
+		} else {
+			console.log("serviceworker/sync not supported!")
+		}
+	</script>
 </head>
-
 <body class="sapUiBody">
 	<div data-sap-ui-component data-name="mrb.offline.demo" data-id="container" data-settings='{"id" : "offlineTest"}'></div>
 </body>
-
 </html>

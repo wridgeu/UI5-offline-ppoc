@@ -8,7 +8,6 @@ sap.ui.define([
 	return Controller.extend("mrb.offline.demo.controller.App", {
 
 		formatter: formatter,
-		indexedDB: indexedDB,
 
 		onInit: function () {
 			//Create database: name, objectstore(multiple via array), keypath(multiple keys via array)
@@ -76,32 +75,15 @@ sap.ui.define([
 			//Dirty get core, some UI stuff for syncing ...
 			var homeView = sap.ui.getCore().byId("container-offlineTest---home");
 			var tanumPar = homeView.byId("syncData").getValue();
-			//SAOP?
- 	/* 		var xhr = new XMLHttpRequest();
-			xhr.open('GET', 'http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test');
-			xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
-			// request state change event
-			xhr.onreadystatechange = function () {// request completed?
-				if (xhr.readyState !== 4) return;
-				if (xhr.status === 200) {// request successful - show response
-					console.log(xhr.responseText);
-				}
-				else {	// request error
-					console.log('HTTP error', xhr.status, xhr.statusText);
-				}
-			};
-			// start request
-			xhr.send()
-			xhr.onload = function (e) {
-				console.log(e);
-			};
-			xhr.onprogress = function (e) {
-				console.log(e);
-			};  */
+			
+			//trigger the SW sync process
+			navigator.serviceWorker.ready.then(function(reg) {
+				return reg.sync.register('sync-something');
+			})
 			//WebRfC SAP System - EWM1: var  url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
 			//Placeholder API for testing: https://jsonplaceholder.typicode.com/todos/1
 			// sap@home http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test
-			(function () {
+			/* (function () {
 				fetch("", {
 					credentials: 'include',
 					headers: {
@@ -112,7 +94,7 @@ sap.ui.define([
 					}).then(function (e) {
 						console.log(e);
 					});
-			})()
+			})() */
 		}
 	});
 });
