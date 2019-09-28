@@ -8,7 +8,8 @@ sap.ui.define([
 	return UIComponent.extend("mrb.offline.demo.Component", {
 
 		metadata: {
-			manifest: "json"
+			manifest: "json",
+			async: true
 		},
 
 		/**
