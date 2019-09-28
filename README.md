@@ -5,6 +5,8 @@ This little repo is based of the OpenUI5 basic template app using the UI5 Build 
 
 ### Detailed information on SW & other stuff used:
 * [SAP Blog - UI5 Offline Application](https://blogs.sap.com/2016/01/14/ui5-offline-application-using-serviceworker-api/)
+* [SAP Blog - OpenUI5 into PWA](https://blogs.sap.com/2017/11/30/ui5ers-buzz-19-lets-be-progressive-convert-an-openui5-application-into-a-progressive-web-app/)
+* [Stackoverflow - Reduce UI5 XHR](https://stackoverflow.com/questions/48883323/service-worker-registered-and-activated-but-doesnt-work-in-offline-mode)
 * [Mozilla SW Documentation](https://developer.mozilla.org/de/docs/Web/API/Service_Worker_API)
 * [Google SW Documentation](https://developers.google.com/web/fundamentals/primers/service-workers/)
 * [PWA Sample on Github](https://github.com/SAP/openui5-pwa-sample/blob/master/src/service-worker.js)
