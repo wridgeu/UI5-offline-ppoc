@@ -73,18 +73,18 @@ sap.ui.define([
 		},
 		onSync: function () {
 			//Dirty get core, some UI stuff for syncing ...
-			var homeView = sap.ui.getCore().byId("container-offlineTest---home");
-			var tanumPar = homeView.byId("syncData").getValue();
+			// var homeView = sap.ui.getCore().byId("container-offlineTest---home");
+			// var tanumPar = homeView.byId("syncData").getValue();
 			
-			//trigger the SW sync process
-			navigator.serviceWorker.ready.then(function(reg) {
-				return reg.sync.register('sync-something');
-			})
+			// //trigger the SW sync process
+			// navigator.serviceWorker.ready.then(function(reg) {
+			// 	return reg.sync.register('sync-something');
+			// })
 			//WebRfC SAP System - EWM1: var  url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
 			//Placeholder API for testing: https://jsonplaceholder.typicode.com/todos/1
-			// sap@home http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test
-			/* (function () {
-				fetch("", {
+			// sap@home http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test; !Successfully tested on deployment of the SAP System!
+			(function () {
+				fetch("http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test", {
 					credentials: 'include',
 					headers: {
 						"Content-Type": "text/html"
@@ -94,7 +94,7 @@ sap.ui.define([
 					}).then(function (e) {
 						console.log(e);
 					});
-			})() */
+			})()
 		}
 	});
 });
