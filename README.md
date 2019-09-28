@@ -19,9 +19,10 @@ This little repo is based of the OpenUI5 basic template app using the UI5 Build 
 ### ToDo:
 * OData
 * Adjust Controller/UI Code - currently only for testing & learning purposes
-* Synchronization between Front- and Backend (with SW and IDDB-Data to OData or others; Fetch/Xmlhttprequest)
-* Sync-Event on SW has to be implemented
+* Synchronization between Front- and Backend (with SW and IDDB-Data to OData or others; Fetch)
+* Sync-Event on SW has to be implemented :white_check_mark:
 * Bind IndexedDB Object Store as model to some list control
+* Fixing SW registration when deployed to an SAP System ServiceWorker registration failed:  Failed to register a ServiceWorker: An SSL certificate error occurred when fetching the script.
 
 ## More information
 * [Live Demo](https://sap.github.io/openui5-basic-template-app)
