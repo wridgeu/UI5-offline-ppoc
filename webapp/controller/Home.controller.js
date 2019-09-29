@@ -75,14 +75,19 @@ sap.ui.define([
 			//Dirty get core, some UI stuff for syncing ...
 			// var homeView = sap.ui.getCore().byId("container-offlineTest---home");
 			// var tanumPar = homeView.byId("syncData").getValue();
-			
 			// //trigger the SW sync process
 			// navigator.serviceWorker.ready.then(function(reg) {
 			// 	return reg.sync.register('sync-something');
 			// })
+			
 			//WebRfC SAP System - EWM1: var  url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
+			
 			//Placeholder API for testing: https://jsonplaceholder.typicode.com/todos/1
+			
 			// sap@home http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test; !Successfully tested on deployment of the SAP System!
+			
+			// sap@home - uploaded (and build) ui5 app for testing Link:
+			// https://vhcalnplci.dummy.nodomain:44300/sap/bc/ui5_ui5/sap/z_ui5sync_app_1/index.html?sap-client=001&sap-ui-language=DE&sap-ui-xx-devmode=true
 			(function () {
 				fetch("http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test", {
 					credentials: 'include',
