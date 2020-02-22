@@ -8,7 +8,7 @@
 	<script 
 		id="sap-ui-bootstrap" 
 		src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
-		data-sap-ui-libs="sap.m, sap.ui.layout, sap.ui.core" 
+		data-sap-ui-libs="sap.m" 
 		data-sap-ui-theme="sap_belize" 
 		data-sap-ui-resourceroots='{
 				"mrb.offline.demo": "./"
@@ -19,7 +19,7 @@
 		data-sap-ui-xx-waitForTheme="true"
 		data-sap-ui-frameOptions="trusted">
 	</script>
-	<script> //check sw api && register the service worker - registration can also be done in index.html
+	<script> //check sw api && register the service worker
 		if ('serviceWorker' in navigator && 'SyncManager' in window) {
 			window.addEventListener('load', function () {
 				navigator.serviceWorker.register('./sw.js')

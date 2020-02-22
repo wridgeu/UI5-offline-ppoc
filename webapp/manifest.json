@@ -1,12 +1,14 @@
 {
 	"_version": "1.12.0",
 	"name": "Testing Offline App",
-	"icons":[{
-		"src": "/favicon.png",
-		"sizes": "144x144",
-		"type": "image/png",
-		"density": 3
-	}],
+	"icons": [
+		{
+			"src": "/favicon.png",
+			"sizes": "144x144",
+			"type": "image/png",
+			"density": 3
+		}
+	],
 	"display": "standalone",
 	"start_url": "/index.html",
 	"lang": "en",
@@ -42,7 +44,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "mrb.offline.demo.view.App",
@@ -55,7 +56,9 @@
 			"libs": {
 				"sap.ui.core": {},
 				"sap.m": {},
-				"sap.ui.layout": {}
+				"sap.ui.layout": {
+					"lazy": true
+				}
 			}
 		},
 		"contentDensities": {
@@ -71,9 +74,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -88,7 +93,9 @@
 				{
 					"pattern": "",
 					"name": "home",
-					"target": ["home"]
+					"target": [
+						"home"
+					]
 				}
 			],
 			"targets": {
