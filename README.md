@@ -17,12 +17,10 @@ This little repo is based of the OpenUI5 basic template app using the UI5 Build 
 * [CORS Anywhere](https://www.npmjs.com/package/cors-anywhere)
 
 ### ToDo:
-* OData
-* Adjust Controller/UI Code - currently only for testing & learning purposes
-* Synchronization between Front- and Backend (with SW and IDDB-Data to OData or others; Fetch)
-* Sync-Event on SW has to be implemented :white_check_mark:
-* Bind IndexedDB Object Store as model to some list control
-* Fixing SW registration when deployed to an SAP System ServiceWorker registration failed:  Failed to register a ServiceWorker: An SSL certificate error occurred when fetching the script.
+- [ ] OData with Mocking Service for testing purposes
+- [ ] Adjust Controller/UI Code - currently only for testing & learning purposes
+- [ ] Synchronization between Front- and Backend (with SW and IDDB-Data to OData or others; Fetch)
+- [ ] Bind IndexedDB Object Store as model to some list control
 
 ## More information
 * [Live Demo](https://sap.github.io/openui5-basic-template-app)
@@ -53,26 +51,6 @@ For installation instructions please see [Installing the UI5 CLI](https://github
     ui5 serve -o /index.html or npm start
     ```
 
-## Testing - !Might not work(several reasons)!
-
-<img src="https://www.freeiconspng.com/uploads/dangerous-icon-13.png" alt="warning" height="50px" width="50" />
-
-* Run ESLint code validation
-    ```sh
-    npm run lint
-    ```
-* Start a local server and execute the tests automatically after every change
-    ```sh
-    npm run watch
-    ```
-* Run ESLint, start a local server and run the tests in CI mode
-    ```sh
-    npm test
-    ```
-
-<img src="https://www.freeiconspng.com/uploads/dangerous-icon-13.png" alt="warning" height="50px" width="50" />
-
-
 For more build and development options please see: [UI5 Build and Development Tooling](https://github.com/SAP/ui5-tooling)
 
 ## WebRfC SAP System
@@ -80,7 +58,7 @@ For more build and development options please see: [UI5 Build and Development To
 * [SAP Blog](https://blogs.sap.com/2012/08/07/webrfc-simply-calling-an-rfc-from-javascript/)
 * [WebRFC Programming Documentation](https://help.sap.com/saphelp_46c/helpdata/en/2b/d920434b8a11d1894c0000e8323c4f/content.htm?no_cache=true)
 
-#### Function module declaration:
+### Function module declaration:
 
 1. Overview of Function Module
     ```
@@ -97,21 +75,21 @@ For more build and development options please see: [UI5 Build and Development To
     *"     VALUE(RETURN_CODE) LIKE  W3PARAM-RET_CODE
     *"----------------------------------------------------------------------
     ```
-1. Changing-Parameter
+2. Changing-Parameter
     ```
     Parametername   Type    Type                DEFAULT
     CONTENT_TYPE	LIKE	W3PARAM-CONT_TYPE   'APPLICATION/JSON'
     CONTENT_LENGTH	LIKE	W3PARAM-CONT_LEN	                     
     RETURN_CODE     LIKE	W3PARAM-RET_CODE	                     
     ```
-1. Tables-Parameter
+3. Tables-Parameter
     ```
     Parametername   Type    Type                DEFAULT
     QUERY_STRING	LIKE	W3QUERY
     HTML	        LIKE	W3HTML
     MIME	        LIKE	W3MIME	                     
     ```
-1. Example Code
+4. Example Code
     ```
     DATA: name TYPE string.
 
@@ -127,9 +105,9 @@ For more build and development options please see: [UI5 Build and Development To
 
     INSERT htmldoc INTO TABLE html.   
     ```
-1. Expose Module via WebRfC with Transaction SMW0 (F7, Function Module)
+5. Expose Module via WebRfC with Transaction SMW0 (F7, Function Module)
 
-1. Function Module can be called via:
+6. Function Module can be called via:
     ```
     http(s)://<IP/Server>:<PORT>/sap/bc/webrfc?_FUNCTION=<Function_Module_Name>&<key=value>
     ```
