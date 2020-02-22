@@ -1,32 +1,38 @@
 {
   "name": "mrb-demo-offline-application",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "directory": "https://github.com/SAPMarco/UI5-Offline-PPoC"
+  },
   "description": "Best-practice starting point for building a freestyle app",
   "private": true,
   "scripts": {
     "start": "ui5 serve -o index.html",
+    "serve": "ui5 serve",
     "lint": "eslint webapp",
-    "karma": "karma start",
-    "karma-ci": "karma start karma-ci.conf.js",
-    "watch": "npm run karma",
-    "test": "npm run lint && rimraf coverage && npm run karma-ci",
-    "build": "rimraf dist && ui5 build --a",
-    "proxy": "node proxy.js"
+    "build:ui": "ui5 build --clean-dest --dest approuter/webapp ",
+    "build": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest --dest ./dist"
   },
   "dependencies": {
-    "@openui5/sap.m": "^1.52.5",
-    "@openui5/sap.ui.core": "^1.52.5",
-    "@openui5/sap.ui.layout": "^1.52.5",
-    "@openui5/themelib_sap_belize": "^1.52.5"
+    "@openui5/sap.m": "^1.74.0",
+    "@openui5/sap.ui.core": "^1.74.0",
+    "@openui5/sap.ui.layout": "^1.74.0",
+    "@openui5/themelib_sap_belize": "^1.74.0",
+    "shx": "^0.3.2"
   },
   "devDependencies": {
-    "cors-anywhere": "^0.4.1",
-    "@ui5/cli": "^1.0.0",
-    "eslint": "^4.19.1",
-    "karma": "^4.0.1",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-coverage": "^1.1.2",
-    "karma-ui5": "^1.0.0",
-    "rimraf": "^2.6.2"
+    "@ui5/cli": "^1.13.1",
+    "eslint": "^6.8.0",
+    "ui5-middleware-livereload": "^0.1.5"
+  },
+  "ui5": {
+    "dependencies": [
+      "@openui5/sap.m",
+      "@openui5/sap.ui.core",
+      "@openui5/sap.ui.layout",
+      "@openui5/themelib_sap_belize",
+      "ui5-middleware-livereload"
+    ]
   }
 }

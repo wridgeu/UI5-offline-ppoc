@@ -9,7 +9,7 @@
 		id="sap-ui-bootstrap" 
 		src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
 		data-sap-ui-libs="sap.m" 
-		data-sap-ui-theme="sap_belize" 
+		data-sap-ui-theme="sap_fiori_3" 
 		data-sap-ui-resourceroots='{
 				"mrb.offline.demo": "./"
 		}' 
@@ -19,7 +19,7 @@
 		data-sap-ui-xx-waitForTheme="true"
 		data-sap-ui-frameOptions="trusted">
 	</script>
-	<script> //check sw api && register the service worker
+	<!-- <script> //check sw api && register the service worker
 		if ('serviceWorker' in navigator && 'SyncManager' in window) {
 			window.addEventListener('load', function () {
 				navigator.serviceWorker.register('./sw.js')
@@ -35,7 +35,7 @@
 			console.log("The value of the property 'isSecureContext' in window is:" + window.isSecureContext);
 			console.log("Serviceworker/Sync is not supported!")
 		}
-	</script>
+	</script> -->
 </head>
 <body class="sapUiBody">
 	<div data-sap-ui-component data-name="mrb.offline.demo" data-id="container" data-settings='{"id" : "offlineTest"}'></div>
