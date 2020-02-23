@@ -8,11 +8,12 @@ sap.ui.define([
 	return Controller.extend("mrb.offline.demo.controller.App", {
 
 		formatter: formatter,
+		indexedDB: indexedDB.getInstance(),
 
 		onInit: function () {
 			//Create database: name, objectstore(multiple via array), keypath(multiple keys via array)
 			//indexedDB.initDB("UI5_WHT", "1", 'WHT', 'TANUM');
-			indexedDB.initDB("localstorage", "1", [['keyvaluepairs', 'TANUM'], ['keyvaluepairs1', ['TANUM', 'TANUM2']]]);
+			this.indexedDB.initDB("localstorage", "1", [['keyvaluepairs', 'TANUM'], ['keyvaluepairs1', ['TANUM', 'TANUM2']]]);
 		},
 		onAddObject: function () {
 			//Testdata
@@ -33,21 +34,21 @@ sap.ui.define([
 			homeView.byId("inputNLPLA").setValue("");
 			homeView.byId("inputNLPLA").getValue("");
 
-			indexedDB.addOjectToDatabase("localstorage", 'keyvaluepairs', 'readwrite', owht);
+			this.indexedDB.addOjectToDatabase("localstorage", 'keyvaluepairs', 'readwrite', owht);
 			console.log(owht.TANUM + " got added!");
 		},
 		onRead: function () {
 			//Read from ObjectStore: DB, OStore, Readoption:READONLY
-			var val = indexedDB.readAllFromDatabase("localstorage", 'keyvaluepairs', "");
+			var val = this.indexedDB.readAllFromDatabase("localstorage", 'keyvaluepairs', "");
 			console.log(val);
 		},
 		onDelete: function () {
 			// DBname, OStoreName, txoption, key from keypath
-			indexedDB.deleteSpecificRow("localstorage", 'keyvaluepairs', 'readwrite', '1932540.04439057556329562');
+			this.indexedDB.deleteSpecificRow("localstorage", 'keyvaluepairs', 'readwrite', '1932540.04439057556329562');
 		},
 		onDeleteOStore: function () {
 			//dbname, OStoreName, txoption, dbversion
-			indexedDB.deleteObjectStore("localstorage", "2", 'keyvaluepairs');
+			this.indexedDB.deleteObjectStore("localstorage", "2", 'keyvaluepairs');
 			//Wenn die DB gelöscht wird (und eine 2te Version existiert),
 			//wird beim onInit kein neuer ObjectStore angelegt, da
 			//standard Version "1" ist, und es keine Version "1" mehr gibt
@@ -69,37 +70,37 @@ sap.ui.define([
 			homeView.byId("inputnewNLPLA").getValue("");
 			homeView.byId("inputKey").getValue("");
 
-			indexedDB.updateObjectInDatabase("localstorage", 'keyvaluepairs', 'readwrite', owht);
+			this.indexedDB.updateObjectInDatabase("localstorage", 'keyvaluepairs', 'readwrite', owht);
 		},
-		onSync: function () {
-			//Dirty get core, some UI stuff for syncing ...
-			// var homeView = sap.ui.getCore().byId("container-offlineTest---home");
-			// var tanumPar = homeView.byId("syncData").getValue();
-			// //trigger the SW sync process
-			// navigator.serviceWorker.ready.then(function(reg) {
-			// 	return reg.sync.register('sync-something');
-			// })
+		// onSync: function () {
+		// 	//Dirty get core, some UI stuff for syncing ...
+		// 	// var homeView = sap.ui.getCore().byId("container-offlineTest---home");
+		// 	// var tanumPar = homeView.byId("syncData").getValue();
+		// 	// //trigger the SW sync process
+		// 	// navigator.serviceWorker.ready.then(function(reg) {
+		// 	// 	return reg.sync.register('sync-something');
+		// 	// })
 			
-			//WebRfC SAP System - EWM1: var  url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
+		// 	//WebRfC SAP System - EWM1: var  url = 'http://10.199.2.253:8000/sap/bc/webrfc?_FUNCTION=Z_MRB_UI5SYNC&_name=' + tanumPar;
 			
-			//Placeholder API for testing: https://jsonplaceholder.typicode.com/todos/1
+		// 	//Placeholder API for testing: https://jsonplaceholder.typicode.com/todos/1
 			
-			// sap@home http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test; !Successfully tested on deployment of the SAP System!
+		// 	// sap@home http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test; !Successfully tested on deployment of the SAP System!
 			
-			// sap@home - uploaded (and build) ui5 app for testing Link:
-			// https://vhcalnplci.dummy.nodomain:44300/sap/bc/ui5_ui5/sap/z_ui5sync_app_1/index.html?sap-client=001&sap-ui-language=DE&sap-ui-xx-devmode=true
-			(function () {
-				fetch("http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test", {
-					credentials: 'include',
-					headers: {
-						"Content-Type": "text/html"
-					  },
-					}).then(function (e) {
-						return e.json();
-					}).then(function (e) {
-						console.log(e);
-					});
-			})()
-		}
+		// 	// sap@home - uploaded (and build) ui5 app for testing Link:
+		// 	// https://vhcalnplci.dummy.nodomain:44300/sap/bc/ui5_ui5/sap/z_ui5sync_app_1/index.html?sap-client=001&sap-ui-language=DE&sap-ui-xx-devmode=true
+		// 	(function () {
+		// 		fetch("http://vhcalnplci.dummy.nodomain:8000/sap/bc/webrfc?_FUNCTION=Z_UI5_SYNC&_name=test", {
+		// 			credentials: 'include',
+		// 			headers: {
+		// 				"Content-Type": "text/html"
+		// 			  },
+		// 			}).then(function (e) {
+		// 				return e.json();
+		// 			}).then(function (e) {
+		// 				console.log(e);
+		// 			});
+		// 	})()
+		// }
 	});
 });

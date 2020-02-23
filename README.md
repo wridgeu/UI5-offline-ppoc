@@ -3,30 +3,11 @@
 # Intro
 This little repo is based of the OpenUI5 basic template app using the UI5 Build and Development Tooling. It's basically a test for SW, IndexedDB and other "Offline"-capabilities.
 
-### Detailed information on SW & other stuff used:
-* [SAP Blog - UI5 Offline Application](https://blogs.sap.com/2016/01/14/ui5-offline-application-using-serviceworker-api/)
-* [SAP Blog - OpenUI5 into PWA](https://blogs.sap.com/2017/11/30/ui5ers-buzz-19-lets-be-progressive-convert-an-openui5-application-into-a-progressive-web-app/)
-* [Stackoverflow - Reduce UI5 XHR](https://stackoverflow.com/questions/48883323/service-worker-registered-and-activated-but-doesnt-work-in-offline-mode)
-* [Mozilla SW Documentation](https://developer.mozilla.org/de/docs/Web/API/Service_Worker_API)
-* [Google SW Documentation](https://developers.google.com/web/fundamentals/primers/service-workers/)
-* [PWA Sample on Github](https://github.com/SAP/openui5-pwa-sample/blob/master/src/service-worker.js)
-* [Background Sync SW](https://davidwalsh.name/background-sync)
-* [UI5Con 2019](https://www.youtube.com/watch?v=z_bwa1wMyT4&feature=youtu.be)
-* [Localforage](https://github.com/localForage/localForage)
-* [Fetch-API](https://gist.github.com/justsml/529d0b1ddc5249095ff4b890aad5e801)
-* [CORS Anywhere](https://www.npmjs.com/package/cors-anywhere)
-
 ### ToDo:
 - [ ] OData with Mocking Service for testing purposes
 - [ ] Adjust Controller/UI Code - currently only for testing & learning purposes
 - [ ] Synchronization between Front- and Backend (with SW and IDDB-Data to OData or others; Fetch)
 - [ ] Bind IndexedDB Object Store as model to some list control
-
-## More information
-* [Live Demo](https://sap.github.io/openui5-basic-template-app)
-* [Documentation](https://openui5.hana.ondemand.com/#/topic/7a4d93c0b0bb439b9d889ffc5b02eac9)
-* [UI5 Tooling](https://github.com/SAP/ui5-tooling)
-* [OpenUI5](https://github.com/SAP/openui5)
 
 ## Prerequisites
 The **UI5 build and development tooling command line interface (UI5 CLI)** has to be installed.
@@ -112,3 +93,21 @@ For more build and development options please see: [UI5 Build and Development To
     http(s)://<IP/Server>:<PORT>/sap/bc/webrfc?_FUNCTION=<Function_Module_Name>&<key=value>
     ```
 
+## Credits
+* [SAP Blog - UI5 Offline Application](https://blogs.sap.com/2016/01/14/ui5-offline-application-using-serviceworker-api/)
+* [SAP Blog - OpenUI5 into PWA](https://blogs.sap.com/2017/11/30/ui5ers-buzz-19-lets-be-progressive-convert-an-openui5-application-into-a-progressive-web-app/)
+* [Stackoverflow - Reduce UI5 XHR](https://stackoverflow.com/questions/48883323/service-worker-registered-and-activated-but-doesnt-work-in-offline-mode)
+* [Mozilla SW Documentation](https://developer.mozilla.org/de/docs/Web/API/Service_Worker_API)
+* [Google SW Documentation](https://developers.google.com/web/fundamentals/primers/service-workers/)
+* [PWA Sample on Github](https://github.com/SAP/openui5-pwa-sample/blob/master/src/service-worker.js)
+* [Background Sync SW](https://davidwalsh.name/background-sync)
+* [UI5Con 2019](https://www.youtube.com/watch?v=z_bwa1wMyT4&feature=youtu.be)
+* [Localforage](https://github.com/localForage/localForage)
+* [Fetch-API](https://gist.github.com/justsml/529d0b1ddc5249095ff4b890aad5e801)
+* [CORS Anywhere](https://www.npmjs.com/package/cors-anywhere)
+* [Cache-Manifest](https://blogs.sap.com/2016/05/19/first-steps-to-create-sapui5-offline-application/)
+* [Going Offline](https://archive.sap.com/documents/docs/DOC-45756)
+* [Live Demo](https://sap.github.io/openui5-basic-template-app)
+* [Documentation](https://openui5.hana.ondemand.com/#/topic/7a4d93c0b0bb439b9d889ffc5b02eac9)
+* [UI5 Tooling](https://github.com/SAP/ui5-tooling)
+* [OpenUI5](https://github.com/SAP/openui5)
