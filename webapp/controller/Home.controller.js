@@ -41,7 +41,7 @@ sap.ui.define([
 		onDelete: function () {
 			// DBname, OStoreName, txoption, key from keypath
 			var rowKey = this.byId("deleteKey").getValue();
-			this.indexedDB.deleteSpecificRow('keyvaluepairs', rowKey);
+			this.indexedDB.deleteByKey('keyvaluepairs', rowKey);
 		},
 		onDeleteOStore: function () {
 			//dbname, OStoreName, txoption, dbversion
@@ -69,6 +69,9 @@ sap.ui.define([
 		},
 		onCreateNewTable: function (){	
 			this.indexedDB.createObjectStore([['Test', 'TANUM'], ['Test123', ['TANUM', 'TANUM2']]]);
+		},
+		onGetByKey: function(){
+			this.indexedDB.readByKey("keyvaluepairs", "193254491")
 		}
 		// onSync: function () {
 		// 	//Dirty get core, some UI stuff for syncing ...

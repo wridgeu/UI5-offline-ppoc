@@ -87,7 +87,7 @@ sap.ui.define([
             }
         },
         //Delete Row in Object Store
-        deleteSpecificRow: function (oStore, delKey) {
+        deleteByKey: function (oStore, delKey) {
             var oDatabaseConnection = this._openDB(this.dbName); //window.indexedDB.open(dbname);
             oDatabaseConnection.onsuccess = function (oEvt) {
                 var txn = oEvt.target.result.transaction(oStore, this.oTransactions.READ_WRITE);
@@ -96,6 +96,7 @@ sap.ui.define([
                 delRequest.onsuccess = function (oEvt) {
                     //Placeholder logging - for the deleted Row
                     console.log(delKey + " got deleted");
+                    console.log(oEvt)
                 }
                 oDatabaseConnection.result.close();
             }.bind(this)
@@ -103,6 +104,19 @@ sap.ui.define([
                 //Display error message in console
                 Log.warning(oEvt.target.error.message);
             }
+        },
+        //ReadyByKey
+        readByKey: function(oStore, readKey){
+            var oDatabaseConnection = this._openDB(this.dbName);
+            oDatabaseConnection.onsuccess = function (oEvt){
+                var oTransaction = oEvt.target.result.transaction(oStore, this.oTransactions.READ_ONLY);
+                var txnObjStore = oTransaction.objectStore(oStore);
+                var getRequest = txnObjStore.get(readKey);
+                getRequest.onsuccess = function(oEvt){
+                    console.log(oEvt.target.result);
+                }
+                oDatabaseConnection.result.close();
+            }.bind(this)
         },
         //Delete entire Object Store
         deleteObjectStore: function (oStore) {

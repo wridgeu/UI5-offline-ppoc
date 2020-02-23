@@ -25,6 +25,10 @@
                     <l:HorizontalLayout>
                         <Button text="Read All Database Entries" press="onRead" />
                     </l:HorizontalLayout>
+                    <Text text="Read one entry by key"/>
+                    <l:HorizontalLayout>
+                        <Button text="Get by Key" press="onGetByKey" />
+                    </l:HorizontalLayout>
                     <Text text="Delete"/>
                     <l:HorizontalLayout>
                         <Button text="Delete Database Object" press="onDelete"/>
