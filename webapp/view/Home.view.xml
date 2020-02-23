@@ -9,25 +9,37 @@
             <l:VerticalLayout class="sapUiContentPadding" width="100%">
                 <l:content>
                     <Text text="Enter VLPLA and NLPLA (Key = Auto):"/>
-                    <l:HorizontalLayout>                
+                    <l:HorizontalLayout>
                         <Button text="Add Database Object" press="onAddObject"/>
-                        <Input id="inputVLPLA" type="Text" placeholder="25-23-1"></Input>
-                        <Input id="inputNLPLA" type="Text" placeholder="24-23-1"></Input>
+                        <Input id="inputVLPLA" type="Text"></Input>
+                        <Input id="inputNLPLA" type="Text"></Input>
                     </l:HorizontalLayout>
                     <Text text="Update specific Entity:"/>
                     <l:HorizontalLayout>
                         <Button text="Update Object Store" press="onUpdateOStore" />
-                        <Input id="inputKey"      type="Text" placeholder="Enter TANUM ..."></Input>                    
+                        <Input id="inputKey"      type="Text" placeholder="Enter TANUM ..."></Input>
                         <Input id="inputnewVLPLA" type="Text" placeholder="24-23-1"></Input>
                         <Input id="inputnewNLPLA" type="Text" placeholder="25-23-1"></Input>
                     </l:HorizontalLayout>
-                    <l:HorizontalLayout>  
-                        <Button text="Read Database Object" press="onRead" />
+                    <Text text="Get all entries in Database"/>
+                    <l:HorizontalLayout>
+                        <Button text="Read All Database Entries" press="onRead" />
+                    </l:HorizontalLayout>
+                    <Text text="Delete"/>
+                    <l:HorizontalLayout>
                         <Button text="Delete Database Object" press="onDelete"/>
+                        <Input id="deleteKey" type="Text" placeholder="some Key"></Input>
+                    </l:HorizontalLayout>
+                    <Text text="Delete Object Store"/>
+                    <l:HorizontalLayout>
                         <Button text="Delete Object Store" press="onDeleteOStore" />
                     </l:HorizontalLayout>
+                    <Text text="Create a new Table"/>
+                    <l:HorizontalLayout>
+                        <Button id="newTable" text="New Table" press="onCreateNewTable"/>
+                    </l:HorizontalLayout>
                     <Text text="Offline/Online - Push to Backend:"/>
-                    <l:HorizontalLayout>                
+                    <l:HorizontalLayout>
                         <Button id="testSync" text="Sync" press="onSync"/>
                         <Input id="syncData" type="Text" placeholder="Some TANUM"></Input>
                     </l:HorizontalLayout>

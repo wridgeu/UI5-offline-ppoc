@@ -42,7 +42,10 @@
 			"desktop": true,
 			"tablet": true,
 			"phone": true
-		}
+		},
+		"supportedThemes": [
+			"sap_fiori_3"
+		]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -52,7 +55,7 @@
 			"id": "app"
 		},
 		"dependencies": {
-			"minUI5Version": "1.60.0",
+			"minUI5Version": "1.71.0",
 			"libs": {
 				"sap.ui.core": {},
 				"sap.m": {},

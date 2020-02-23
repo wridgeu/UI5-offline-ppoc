@@ -1,121 +1,157 @@
 sap.ui.define([
-    "sap/ui/base/Object"
-], function (Object) {
+    "sap/ui/base/Object",
+    "sap/base/Log"
+], function (Object, Log) {
     "use strict";
 
     var instance;
-    var globalScope = this;
-    var indexedDB = Object.extend("mrb.offline.demo.model.indexedDB", {
-        constructor: function(){},
-        initDB: function (dbName, dbVers, arrObj) { // oSname, kPath){
-            var oIDDB = this._openDB(dbName, dbVers); //indexedDB.open(dbname);
-            oIDDB.onupgradeneeded = function (evt) {
-                //evt.target.result.createObjectStore(oSname, {keyPath: kPath});
-                //create multiple objectStores with multiple Keyfields at once;	
-                for (var i = 0; i < arrObj.length; i++) {
-                    evt.target.result.createObjectStore(arrObj[i][0], { keyPath: arrObj[i][1] });
+    var IndexedDB = Object.extend("mrb.offline.demo.model.indexedDB", {
+        constructor: function (dbName, dbVers, arrObj) {
+            this.dbName = dbName;
+            this.dbVers = parseInt(dbVers, 10) || parseInt("1", 10);;
+            this.arrObj = arrObj;
+            this.oTransactions = {
+                READ_ONLY: "readonly",
+                READ_WRITE: "readwrite",
+                VERSION_CHANGE: "versionchange"
+            };
+            var oDatabaseConnection = this._openDB(this.dbName, this.dbVers); //Connect to our DB;
+            oDatabaseConnection.onupgradeneeded = function (oEvt) {
+                //Initialize our ObjectStore with  multiple Key-Fields at once;	
+                for (var i = 0; i < this.arrObj.length; i++) {
+                    oEvt.target.result.createObjectStore(this.arrObj[i][0], { keyPath: this.arrObj[i][1] });
                 }
-            }
-            oIDDB.onsuccess = function (evt) {
+            }.bind(this);
+            oDatabaseConnection.onsuccess = function (oEvt) {
                 //could be implemented to create a "database state"
-                console.log('Database got created or called: ');
-                console.log(evt.target.result);
+                // console.log('Database got created or called: ');
+                Log.info("Database got created or called:");
+                console.log(oEvt.target.result);
+                oEvt.target.result.close();
             }
-            oIDDB.onerror = function (evt) {
+            oDatabaseConnection.onerror = function (oEvt) {
                 //Display error message in console
-                console.log(evt.target.error.message);
+                Log.warning(oEvt.target.error.message);
+                // console.log(oEvt.target.error.message);
             }
         },
-        addOjectToDatabase: function (dbName, oStore, txoption, addObj) {
-            var oIDDB = this._openDB(dbName); //window.indexedDB.open(dbname);
-            oIDDB.onsuccess = function (evt) {
-                var txn = evt.target.result.transaction(oStore, txoption);
+        //Create Entry Object in Object STore
+        addOjectToDatabase: function (oStore, addObj) {
+            var oDatabaseConnection = this._openDB(this.dbName); //window.indexedDB.open(dbname);
+            oDatabaseConnection.onsuccess = function (oEvt) {
+                var txn = oEvt.target.result.transaction(oStore, this.oTransactions.READ_WRITE);
                 var store = txn.objectStore(oStore);
                 store.add(addObj);
-            }
-            oIDDB.onerror = function (evt) {
+                oDatabaseConnection.result.close();
+            }.bind(this)
+            oDatabaseConnection.onerror = function (oEvt) {
                 //Display error message in console
-                console.log(evt.target.error.message);
+                Log.warning(oEvt.target.error.message);
             }
         },
-        updateObjectInDatabase: function (dbName, oStore, txOption, oObjData) {
-            txOption = txOption || "readwrite";
-            var oIDDB = this._openDB(dbName); //window.indexedDB.open(dbname);
-            oIDDB.onsuccess = function (evt) {
-                var txn = evt.target.result.transaction(oStore, txOption);
+        //Update Entry in Object Store
+        updateObjectInDatabase: function (oStore, oObjData) {
+            var oDatabaseConnection = this._openDB(this.dbName); //window.indexedDB.open(dbname);
+            oDatabaseConnection.onsuccess = function (oEvt) {
+                var txn = oEvt.target.result.transaction(oStore, this.oTransactions.READ_WRITE);
                 var store = txn.objectStore(oStore);
                 store.put(oObjData);
-            }
-            oIDDB.onerror = function (evt) {
+                oDatabaseConnection.result.close();
+            }.bind(this)
+            oDatabaseConnection.onerror = function (oEvt) {
                 //Display error message in console
-                console.log(evt.target.error.message);
+                Log.warning(oEvt.target.error.message);
             }
         },
-        readAllFromDatabase: function (dbName, oStore, txOption) {
-            txOption = txOption || "readonly";
-            var oIDDB = this._openDB(dbName); //window.indexedDB.open(dbname);
-            oIDDB.onsuccess = function (evt) {
-                var txn = evt.target.result.transaction(oStore, txOption);
+        //Read all Entries
+        readAllFromDatabase: function (oStore) {
+            var oDatabaseConnection = this._openDB(this.dbName); //window.indexedDB.open(dbname);
+            oDatabaseConnection.onsuccess = function (oEvt) {
+                var txn = oEvt.target.result.transaction(oStore, this.oTransactions.READ_ONLY);
                 var txnObjStore = txn.objectStore(oStore);
                 var oCursor = txnObjStore.openCursor();
-                oCursor.onsuccess = function (evt) {
-                    var currentCursor = evt.target.result;
+                oCursor.onsuccess = function (oEvt) {
+                    var currentCursor = oEvt.target.result;
                     if (currentCursor) {
                         //Placeholder logging - for each object in Object Store
                         console.log(currentCursor);
                         currentCursor.continue();
+                    } else {
+                        oDatabaseConnection.result.close();
                     }
                 }
-            }
-            oIDDB.onerror = function (evt) {
+            }.bind(this)
+            oDatabaseConnection.onerror = function (oEvt) {
                 //Display error message in console
-                console.log(evt.target.error.message);
+                Log.warning(oEvt.target.error.message);
             }
         },
-        deleteSpecificRow: function (dbName, oStore, txOption, delKey) {
-            var oIDDB = this._openDB(dbName); //window.indexedDB.open(dbname);
-            oIDDB.onsuccess = function (evt) {
-                var txn = evt.target.result.transaction(oStore, txOption);
+        //Delete Row in Object Store
+        deleteSpecificRow: function (oStore, delKey) {
+            var oDatabaseConnection = this._openDB(this.dbName); //window.indexedDB.open(dbname);
+            oDatabaseConnection.onsuccess = function (oEvt) {
+                var txn = oEvt.target.result.transaction(oStore, this.oTransactions.READ_WRITE);
                 var txnObjStore = txn.objectStore(oStore);
                 var delRequest = txnObjStore.delete(delKey);
-                delRequest.onsuccess = function () {
+                delRequest.onsuccess = function (oEvt) {
                     //Placeholder logging - for the deleted Row
                     console.log(delKey + " got deleted");
                 }
-            }
-            oIDDB.onerror = function (evt) {
+                oDatabaseConnection.result.close();
+            }.bind(this)
+            oDatabaseConnection.onerror = function (oEvt) {
                 //Display error message in console
-                console.log(evt.target.error.message);
+                Log.warning(oEvt.target.error.message);
             }
         },
-        deleteObjectStore: function (dbName, dbVers, oStore) {
-            var oIDDB = this._openDB(dbName, dbVers);
-            oIDDB.onupgradeneeded = function (evt) {
-                evt.target.result.deleteObjectStore(oStore);
+        //Delete entire Object Store
+        deleteObjectStore: function (oStore) {
+            this.dbVers += 1;
+            var oDatabaseConnection = this._openDB(this.dbName, this.dbVers);
+            oDatabaseConnection.onupgradeneeded = function (oEvt) {
+                oEvt.target.result.deleteObjectStore(oStore);
             }
-            oIDDB.onerror = function (evt) {
+            oDatabaseConnection.onsuccess = function (oEvt) {
+                console.log(oEvt)
+                oDatabaseConnection.result.close();
+            }
+            oDatabaseConnection.onerror = function (oEvt) {
                 //Display error message in console
-                console.log(evt.target.error.message);
+                Log.warning(oEvt.target.error.message);
             }
         },
-        //opens up a database with a specific version:default 1
-        _openDB: function (oDBName, dbVers) {
-            dbVers = dbVers || "1";
-            //make sure our browser supports indexeddb
-            if (!('indexedDB' in window)) {
-                return console.log('This browser doesn\'t support IndexedDB');;
-            } else {
-                // eslint-disable-next-line consistent-return
-               
-                return globalScope.indexedDB.open(oDBName, dbVers);
+        //Add new Object Store
+        createObjectStore: function (arrObjStore) {
+            this.dbVers += 1;
+            var oDatabaseConnection = this._openDB(this.dbName, this.dbVers);
+            oDatabaseConnection.onupgradeneeded = function (oEvt) {
+                console.log('Performing upgrade');
+                for (var i = 0; i < arrObjStore.length; i++) {
+                    oEvt.target.result.createObjectStore(arrObjStore[i][0], { keyPath: arrObjStore[i][1] });
+                }
+            };
+            oDatabaseConnection.onsuccess = function (oEvt) {
+                oDatabaseConnection.close();
             }
-        }
+            oDatabaseConnection.onerror = function (oEvt) {
+                console.log(oEvt);
+            }
+        },
+        //opens up a database connection with version:default = 1
+        _openDB: function (dbName, dbVers) {
+            var indexedDB = this.indexedDB || this.mozIndexedDB || this.webkitIndexedDB || this.msIndexedDB || null;
+            if (indexedDB !== null) {
+                return indexedDB.open(dbName, dbVers);
+            }
+            Log.fatal("This Browser does not support IndexedDB.");
+            console.log('This browser doesn\'t support IndexedDB.');
+        }.bind(this)
     });
 
     return {
-        getInstance: function () {
+        getInstance: function (dbName, dbVers, arrObj) {
             if (!instance) {
-                instance = new indexedDB();
+                instance = new IndexedDB(dbName, dbVers, arrObj);
             }
             return instance;
         }
