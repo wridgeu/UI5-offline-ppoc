@@ -27,11 +27,12 @@
                     </l:HorizontalLayout>
                     <Text text="Read one entry by key"/>
                     <l:HorizontalLayout>
-                        <Button text="Get by Key" press="onGetByKey" />
+                        <Button text="Get by Key" press="onGetByKey" />                        
+                        <Input id="getKey" type="Text" placeholder="some Key"></Input>
                     </l:HorizontalLayout>
                     <Text text="Delete"/>
                     <l:HorizontalLayout>
-                        <Button text="Delete Database Object" press="onDelete"/>
+                        <Button text="Delete by Key" press="onDelete"/>
                         <Input id="deleteKey" type="Text" placeholder="some Key"></Input>
                     </l:HorizontalLayout>
                     <Text text="Delete Object Store"/>
