@@ -136,49 +136,12 @@ sap.ui.define([
             oTransaction.onerror = function () {
                 Log.fatal("Failed to read entry from database.")
             }
-        },
-        //Delete entire Object Store
-        deleteObjectStore: function (oStore) {
-            //close previous connection in order to upgrade DB
-            this.oDatabaseConnection.close();
-            this.dbVers += 1;
-            this.oDatabaseConnection = this._openDB(this.dbName, this.dbVers);
-            this.oDatabaseConnection.onupgradeneeded = function (oEvt) {                
-                oEvt.target.result.deleteObjectStore(oStore);
-            }
-            this.oDatabaseConnection.onsuccess = function (oEvt) {
-                this.oDatabaseConnection = oEvt.target.result;
-            }.bind(this)
-            this.oDatabaseConnection.onerror = function (oEvt) {
-                //Display error message in console
-                Log.warning(oEvt.target.error.message);
-                //TODO: Add new connection opener
-            }
-        },
-        //Add new Object Store
-        createObjectStore: function (arrObjStore) {
-            //close previous connection in order to upgrade DB
-            this.oDatabaseConnection.close();
-            this.dbVers += 1;
-            this.oDatabaseConnection = this._openDB(this.dbName, this.dbVers);
-            this.oDatabaseConnection.onupgradeneeded = function (oEvt) {
-                console.log('Performing upgrade');
-                for (var i = 0; i < arrObjStore.length; i++) {
-                    oEvt.target.result.createObjectStore(arrObjStore[i][0], { keyPath: arrObjStore[i][1] });
-                }
-            }
-            this.oDatabaseConnection.onsuccess = function(oEvt){
-                this.oDatabaseConnection = oEvt.target.result;
-            }.bind(this)
-            this.oDatabaseConnection.onerror = function () {
-                Log.fatal("Could not upgrade database.")
-                //TODO: Add new connection opener
-            }
-        },
+        },        
         //opens up a database connection with version:default = 1
         _openDB: function (dbName, dbVers) {
             var indexedDB = this.indexedDB || this.mozIndexedDB || this.webkitIndexedDB || this.msIndexedDB || null;
             if (indexedDB !== null) {
+                dbVers = dbVers <= this.dbVers ? this.dbVers : dbVers; 
                 return indexedDB.open(dbName, dbVers);
             }
             Log.fatal("This Browser does not support IndexedDB.");
