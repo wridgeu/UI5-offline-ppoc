@@ -6,9 +6,9 @@ sap.ui.define([
 
     var IndexedDB = Object.extend("mrb.offline.demo.model.indexedDB", {
         constructor: function (dbName, dbVers, arrObj) {
-            this.dbName = dbName;
+            this.dbName = dbName || "IndexedDB";
             this.dbVers = parseInt(dbVers, 10) || parseInt("1", 10);;
-            this.arrObj = arrObj;
+            this.arrObj = arrObj || {};
             this.oTransactions = {
                 READ_ONLY: "readonly",
                 READ_WRITE: "readwrite",
@@ -35,7 +35,7 @@ sap.ui.define([
             }.bind(this)
             oDbOpenRequest.onerror = function (oEvt) {
                 //Display error message in console
-                Log.warning(oEvt.target.error.message);
+                Log.fatal(oEvt.target.error.message);
                 // console.log(oEvt.target.error.message);
             }
         },
@@ -76,7 +76,7 @@ sap.ui.define([
             }
         },
         //Read all Entries
-        readAllFromDatabase: function (oStore) {
+        readObjectStoreEntries: function (oStore) {
             var oTransaction = this.oDatabaseConnection.transaction(oStore, this.oTransactions.READ_ONLY);
             var objectStore = oTransaction.objectStore(oStore);
             var objectStoreRequest = objectStore.openCursor();

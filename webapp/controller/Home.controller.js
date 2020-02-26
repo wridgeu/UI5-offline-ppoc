@@ -34,7 +34,7 @@ sap.ui.define([
 		},
 		onRead: function () {
 			//Read from ObjectStore: DB, OStore, Readoption:READONLY
-			this.indexedDB.readAllFromDatabase('keyvaluepairs');
+			this.indexedDB.readObjectStoreEntries('keyvaluepairs');
 		},
 		onDelete: function () {
 			// DBname, OStoreName, txoption, key from keypath
