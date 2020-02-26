@@ -29,7 +29,7 @@ sap.ui.define([
 			//clear values again - TODO
 			this.byId("inputNLPLA").setValue("");
 			this.byId("inputNLPLA").getValue("");
-			this.indexedDB.addOjectToDatabase('keyvaluepairs', owht);
+			this.indexedDB.addObjectToDatabase('keyvaluepairs', owht);
 			console.log(owht.TANUM + " got added!");
 		},
 		onRead: function () {

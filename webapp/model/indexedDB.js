@@ -40,7 +40,7 @@ sap.ui.define([
             }
         },
         //Create Entry Object in Object STore
-        addOjectToDatabase: function (oStore, addObj) {
+        addObjectToDatabase: function (oStore, addObj) {
             var oTransaction = this.oDatabaseConnection.transaction(oStore, this.oTransactions.READ_WRITE);
             var objectStore = oTransaction.objectStore(oStore);
             var objectStoreRequest = objectStore.add(addObj);
@@ -192,7 +192,6 @@ sap.ui.define([
 
     return {
         getInstance: function (dbName, dbVers, arrObj) {
-
             return new IndexedDB(dbName, dbVers, arrObj);
         }
     };
