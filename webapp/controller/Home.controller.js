@@ -69,7 +69,11 @@ sap.ui.define([
 		},
 		onGetByKey: function () {
 			var getKey = this.byId("getKey").getValue();
-			this.indexedDB.readByKey("keyvaluepairs", getKey)
+			var test;
+			this.indexedDB.readByKey("keyvaluepairs", getKey, function(result){
+				test = result;
+				console.log(test)
+			}.bind(this))
 		}
 		// onSync: function () {
 		// 	//Dirty get core, some UI stuff for syncing ...

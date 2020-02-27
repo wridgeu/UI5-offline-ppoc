@@ -119,14 +119,15 @@ sap.ui.define([
             }
         },
         //ReadyByKey
-        readByKey: function (oStore, readKey) {
+        readByKey: function (oStore, readKey, callback) {
             var oTransaction = this.oDatabaseConnection.transaction(oStore, this.oTransactions.READ_ONLY);
             var objectStore = oTransaction.objectStore(oStore);
             var objectStoreRequest = objectStore.get(readKey);
             objectStoreRequest.onsuccess = function (oEvt) {
                 console.log(oEvt.target.result);
+                callback(oEvt.target.result);
                 Log.info(readKey + " was selected.");
-            }
+            }.bind(this);
             objectStoreRequest.onerror = function () {
                 Log.fatal("Could not read entry in database.")
             }
