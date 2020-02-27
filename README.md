@@ -111,3 +111,6 @@ For more build and development options please see: [UI5 Build and Development To
 * [Documentation](https://openui5.hana.ondemand.com/#/topic/7a4d93c0b0bb439b9d889ffc5b02eac9)
 * [UI5 Tooling](https://github.com/SAP/ui5-tooling)
 * [OpenUI5](https://github.com/SAP/openui5)
+* [Offline UI5 using PouchDB - Example](https://github.com/UI5Con-Blore-OfflineUI5/OfflineToDo)
+  * [Slides](https://de.slideshare.net/GAURAVSHROFF2/ui5-conbanglore-ui5-app-with-offline-storage-using-pouchdb)
+  * [Blog](https://blogs.sap.com/2016/02/02/create-offline-application-in-sapui5-using-pouch-db/)
