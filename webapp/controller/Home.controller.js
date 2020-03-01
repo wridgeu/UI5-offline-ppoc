@@ -34,7 +34,19 @@ sap.ui.define([
 		},
 		onRead: function () {
 			//Read from ObjectStore: DB, OStore, Readoption:READONLY
-			this.indexedDB.readObjectStoreEntries('keyvaluepairs');
+			this.indexedDB.readObjectStoreEntries('keyvaluepairs', function (results) {
+				var text = "";
+				for (var i = 0; i < results.length; i++) {
+					var arrayObj = results[i];
+					var objKeys = Object.keys(arrayObj);
+					for (var j = 0; j < objKeys.length; j++) {
+						text += arrayObj[objKeys[j]];
+					}
+					text += ", ";
+				}
+				this.byId('textArea').setValue(text);
+				console.log(results);
+			}.bind(this));
 		},
 		onDelete: function () {
 			// DBname, OStoreName, txoption, key from keypath
@@ -70,7 +82,7 @@ sap.ui.define([
 		onGetByKey: function () {
 			var getKey = this.byId("getKey").getValue();
 			var test;
-			this.indexedDB.readByKey("keyvaluepairs", getKey, function(result){
+			this.indexedDB.readByKey("keyvaluepairs", getKey, function (result) {
 				test = result;
 				console.log(test)
 			}.bind(this))

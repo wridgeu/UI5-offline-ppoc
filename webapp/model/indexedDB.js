@@ -76,29 +76,34 @@ sap.ui.define([
             }
         },
         //Read all Entries
-        readObjectStoreEntries: function (oStore) {
+        readObjectStoreEntries: function (oStore, callback) {
             var oTransaction = this.oDatabaseConnection.transaction(oStore, this.oTransactions.READ_ONLY);
             var objectStore = oTransaction.objectStore(oStore);
             var objectStoreRequest = objectStore.openCursor();
+            var aResults = [];
             objectStoreRequest.onsuccess = function (oEvt) {
                 var cursor = oEvt.target.result;
                 if (cursor) {
                     //Placeholder logging - for each object in Object Store
-                    console.log(cursor);
+                    //console.log(cursor);
+                    aResults.push(cursor.value);
                     cursor.continue();
                 } else {
+                    if (aResults.length > 0) {
+                        callback(aResults);
+                    }
                     Log.info("No more entries in object store.");
                 }
-            }
+            }.bind(this);
             objectStoreRequest.onerror = function () {
                 Log.fatal("Could not read database.")
-            }
+            };
             oTransaction.oncomplete = function () {
                 Log.info("Successfully completed 'iteration' over database.")
-            }
+            };
             oTransaction.onerror = function () {
                 Log.fatal("Failed to iterate over database.")
-            }
+            };
         },
         //Delete Row in Object Store
         deleteByKey: function (oStore, delKey) {
@@ -137,12 +142,12 @@ sap.ui.define([
             oTransaction.onerror = function () {
                 Log.fatal("Failed to read entry from database.")
             }
-        },        
+        },
         //opens up a database connection with version:default = 1
         _openDB: function (dbName, dbVers) {
             var indexedDB = this.indexedDB || this.mozIndexedDB || this.webkitIndexedDB || this.msIndexedDB || null;
             if (indexedDB !== null) {
-                dbVers = dbVers <= this.dbVers ? this.dbVers : dbVers; 
+                dbVers = dbVers <= this.dbVers ? this.dbVers : dbVers;
                 return indexedDB.open(dbName, dbVers);
             }
             Log.fatal("This Browser does not support IndexedDB.");
