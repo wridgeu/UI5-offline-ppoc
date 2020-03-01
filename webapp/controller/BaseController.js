@@ -15,6 +15,5 @@ sap.ui.define([
 			//Do not get Instance via OwnerComponent in Base-Class
 			//We would have to call onInit from inheriting objects like "BaseController.prototype.onInit.apply(this);"
 		}
-
 	});
 });
